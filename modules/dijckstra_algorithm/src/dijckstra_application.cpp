@@ -47,7 +47,7 @@ std::string DijckstraApplication::operator()(int argc, const char** argv) {
 	        try {
 		        Dijckstra g(std::move(m), vertex_num);
 	        	std::vector<int> sp = g.GetShortestPathBetween(CastNumber(argv[2]), CastNumber(argv[3]));
-	        	std::string res;
+	        	std::string res = nullptr;
 	        	for (size_t i = 0; i < sp.size(); i++) {
 	        		res += std::to_string(sp[i]);
 	        		if ( i != sp.size() - 1) res += " ";
