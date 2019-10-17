@@ -17,20 +17,20 @@ std::string DijckstraApplication::Info() {
 }
 std::string DijckstraApplication::operator()(int argc, const char** argv) {
     if (argc == 2) {
-        if (std::string(argv[1]) == "help") {
+        if (strcmp(argv[1], "help") == 0) {
             return Info();
         }
     	return "Incorrect input.";
     }
 	
 	if (argc == 3) {
-        if (std::string(argv[1]) == "start" && std::string(argv[2]) == "calculation") {
+        if (strcmp(argv[1], "start") == 0 && strcmp(argv[2], "calculation")) {
             return Info();
         }
     	return "Incorrect input.";
     }
 	if (argc == 4) {
-        if (std::string(argv[1]) == "init" && std::string(argv[2]) == "graph") {
+        if (strcmp(argv[1], "init") == 0 && strcmp(argv[2], "graph") == 0) {
 	        try {
 		        vertex_num = CastNumber(argv[3]);
 	        	m.resize(vertex_num);
@@ -43,7 +43,7 @@ std::string DijckstraApplication::operator()(int argc, const char** argv) {
 	            return "Error with argument " +
 	                std::to_string(2) + ": " + re.what();
 	        }
-        } else if (std::string(argv[1]) == "sp") {
+        } else if (strcmp(argv[1], "sp") == 0) {
 	        try {
 		        Dijckstra g(std::move(m), vertex_num);
 	        	std::vector<int> sp = g.GetShortestPathBetween(CastNumber(argv[2]), CastNumber(argv[3]));
@@ -63,7 +63,7 @@ std::string DijckstraApplication::operator()(int argc, const char** argv) {
 		}
     }
 
-	if (std::string(argv[1]) == "add") {
+	if (strcmp(argv[1], "add") == 0) {
 		try {
 			m[CastNumber(argv[2])][CastNumber(argv[3])] = CastNumber(argv[4]);
 			m[CastNumber(argv[3])][CastNumber(argv[2])] = CastNumber(argv[4]);
