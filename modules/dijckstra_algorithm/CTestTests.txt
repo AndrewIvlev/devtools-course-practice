@@ -12,18 +12,26 @@ set_tests_properties (${prefix}_can_Run PROPERTIES
     LABELS "${MODULE}")
 
 add_test(
-    NAME ${prefix}_check_correctness_of_Dijckstra_algorithm
+    NAME ${prefix}_Shortest_path_between_two_vertex
     COMMAND ${APPLICATION}
 )
 
-set_tests_properties (${prefix}_check_correctness_of_Dijckstra_algorithm PROPERTIES
+set_tests_properties (${prefix}_Shortest_path_between_two_vertex PROPERTIES
     PASS_REGULAR_EXPRESSION "This is a complex number calculator"
     LABELS "${MODULE}")
 
 add_test(
-    NAME ${prefix}_check_correctness_of_Dijckstra_algorithm_from_other_vertex
+    NAME ${prefix}_Validation_incorrect_input
     COMMAND ${APPLICATION} 1 2
 )
-set_tests_properties (${prefix}_check_correctness_of_Dijckstra_algorithm_from_other_vertex PROPERTIES
+set_tests_properties (${prefix}_Validation_incorrect_input PROPERTIES
+    PASS_REGULAR_EXPRESSION "ERROR: Should be 5 arguments."
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_Shortest_path_between_two_vertex_which_equals
+    COMMAND ${APPLICATION} 1 2
+)
+set_tests_properties (${prefix}_Shortest_path_between_two_vertex_which_equals
     PASS_REGULAR_EXPRESSION "ERROR: Should be 5 arguments."
     LABELS "${MODULE}")
