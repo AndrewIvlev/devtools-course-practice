@@ -1,6 +1,6 @@
 // Copyright 2019 Ivlev Andrey
 
-#include <string>
+#include <string.h>
 #include <stdexcept>
 #include "include/dijckstra_application.h"
 
