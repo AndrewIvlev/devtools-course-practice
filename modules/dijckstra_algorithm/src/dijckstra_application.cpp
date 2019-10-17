@@ -31,29 +31,47 @@ std::string DijckstraApplication::operator()(int argc, const char** argv) {
     }
 	if (argc == 4) {
         if (std::string(argv[1]) == "init" && std::string(argv[2]) == "graph") {
-            vertex_num = CastNumber(argv[3]);
-        	m.resize(vertex_num);
-        	for (int i = 0; i < vertex_num; ++i) {
-        		m[i].resize(vertex_num);
-        		for (int j = 0; j < vertex_num; ++j) m[i][j] = 0;
-        	}
+	        try {
+		        vertex_num = CastNumber(argv[3]);
+	        	m.resize(vertex_num);
+	        	for (int i = 0; i < vertex_num; ++i) {
+	        		m[i].resize(vertex_num);
+	        		for (int j = 0; j < vertex_num; ++j) m[i][j] = 0;
+	        	}
+	        }
+        	catch(const std::runtime_error& re) {
+	            return "Error with argument " +
+	                std::to_string(2) + ": " + re.what();
+	        }
         } else if (std::string(argv[1]) == "sp") {
-        	Dijckstra g(std::move(m), vertex_num);
-			std::vector<int> sp = g.GetShortestPathBetween(CastNumber(argv[2]), CastNumber(argv[3]));
-			std::string res;
-			for (size_t i = 0; i < sp.size(); i++) {
-				res += std::to_string(sp[i]);
-				if ( i != sp.size() - 1) res += " ";
-			}
-			return res;
+	        try {
+		        Dijckstra g(std::move(m), vertex_num);
+	        	std::vector<int> sp = g.GetShortestPathBetween(CastNumber(argv[2]), CastNumber(argv[3]));
+	        	std::string res;
+	        	for (size_t i = 0; i < sp.size(); i++) {
+	        		res += std::to_string(sp[i]);
+	        		if ( i != sp.size() - 1) res += " ";
+	        	}
+	        	return res;
+	        }
+        	catch(const std::runtime_error& re) {
+	            return "Error with argument " +
+	                std::to_string(2) + ": " + re.what();
+	        }
 		} else {
 			return "Incorrect input.";
 		}
     }
 
 	if (std::string(argv[1]) == "add") {
-		m[CastNumber(argv[2])][CastNumber(argv[3])] = CastNumber(argv[4]);
-		m[CastNumber(argv[3])][CastNumber(argv[2])] = CastNumber(argv[4]);
+		try {
+			m[CastNumber(argv[2])][CastNumber(argv[3])] = CastNumber(argv[4]);
+			m[CastNumber(argv[3])][CastNumber(argv[2])] = CastNumber(argv[4]);
+		}
+        catch(const std::runtime_error& re) {
+            return "Error with argument " +
+                std::to_string(2) + ": " + re.what();
+        }
 	}
 	
 	return "";
