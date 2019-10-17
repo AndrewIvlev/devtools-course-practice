@@ -4,7 +4,6 @@ file(GLOB srcs "*.cpp")
 set_source_files_properties(${srcs} PROPERTIES
     LABELS "${MODULE};Test")
 
-
 add_executable(${target} ${srcs} ${hdrs})
 set_target_properties(${target} PROPERTIES
     LABELS "${MODULE};Test")
