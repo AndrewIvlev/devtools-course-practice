@@ -84,8 +84,13 @@ std::vector<int> Dijckstra::AllShortestPathsFrom(int vertex) {
 
 std::vector<int> Dijckstra::GetShortestPathBetween(int vertex1, int vertex2)
 {
+	std::vector<int> result;
 	if (vertex1 > vertex2) {
 		std::swap(vertex1, vertex2);
+	}
+	if (vertex1 == vertex2) {
+		result.push_back(0);
+		return result;
 	}
 	std::vector<int> d_ = AllShortestPathsFrom(vertex1);
 	std::vector<int> ver(count_, 0);
@@ -109,7 +114,6 @@ std::vector<int> Dijckstra::GetShortestPathBetween(int vertex1, int vertex2)
 		}
 	}
 
-	std::vector<int> result;
 	std::cout << "The shortest path:" << '\n';
 	for (int i = k - 1; i >= 0; i--) {
 	    std::cout << ver[i] << " ";

@@ -20,37 +20,43 @@ std::string DijckstraApplication::operator()(int argc, const char** argv) {
         if (std::string(argv[1]) == "help") {
             return Info();
         }
+    	return "Incorrect input.";
     }
 	
 	if (argc == 3) {
         if (std::string(argv[1]) == "start" && std::string(argv[2]) == "calculation") {
             return Info();
         }
+    	return "Incorrect input.";
     }
-	int n = 0;
 	if (argc == 4) {
         if (std::string(argv[1]) == "init" && std::string(argv[2]) == "graph") {
-            n = CastNumber(argv[3]);
-        }
+            vertex_num = CastNumber(argv[3]);
+        	m.resize(vertex_num);
+        	for (int i = 0; i < vertex_num; ++i) {
+        		m[i].resize(vertex_num);
+        		for (int j = 0; j < vertex_num; ++j) m[i][j] = 0;
+        	}
+        } else if (std::string(argv[1]) == "sp") {
+        	Dijckstra g(std::move(m), vertex_num);
+			std::vector<int> sp = g.GetShortestPathBetween(CastNumber(argv[2]), CastNumber(argv[3]));
+			std::string res;
+			for (size_t i = 0; i < sp.size(); i++) {
+				res += std::to_string(sp[i]);
+				if ( i != sp.size() - 1) res += " ";
+			}
+			return res;
+		} else {
+			return "Incorrect input.";
+		}
     }
 
-	graph_weights_matrix m;
 	if (std::string(argv[1]) == "add") {
 		m[CastNumber(argv[2])][CastNumber(argv[3])] = CastNumber(argv[4]);
 		m[CastNumber(argv[3])][CastNumber(argv[2])] = CastNumber(argv[4]);
 	}
 	
-	if (std::string(argv[1]) == "sp") {
-		Dijckstra g(std::move(m), n);
-		std::vector<int> sp = g.GetShortestPathBetween(CastNumber(argv[3]), CastNumber(argv[4]));
-		std::string res;
-		for (int i : sp) {
-			res += char(i);
-		}
-		return res;
-	}
-	
-	return "Incorrect input.";
+	return "";
 }
 
 int DijckstraApplication::CastNumber(const char* num) {
