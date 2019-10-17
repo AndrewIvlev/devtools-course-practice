@@ -30,19 +30,19 @@ std::string DijckstraApplication::operator()(int argc, const char** argv) {
 	int n = 0;
 	if (argc == 4) {
         if (std::string(argv[1]) == "init" && std::string(argv[2]) == "graph") {
-            n = (int)argv[3];
+            n = CastNumber(argv[3]);
         }
     }
 
 	graph_weights_matrix m;
 	if (std::string(argv[1]) == "add") {
-		m[(int)argv[2]][(int)argv[3]] = (int)argv[4];
-		m[(int)argv[3]][(int)argv[2]] = (int)argv[4];
+		m[CastNumber(argv[2])][CastNumber(argv[3])] = CastNumber(argv[4]);
+		m[CastNumber(argv[3])][CastNumber(argv[2])] = CastNumber(argv[4]);
 	}
 	
 	if (std::string(argv[1]) == "sp") {
 		Dijckstra g(std::move(m), n);
-		std::vector<int> sp = g.GetShortestPathBetween((int)argv[3], (int)argv[4]);
+		std::vector<int> sp = g.GetShortestPathBetween(CastNumber(argv[3]), CastNumber(argv[4]));
 		std::string res;
 		for (int i : sp) {
 			res += char(i);
@@ -51,4 +51,23 @@ std::string DijckstraApplication::operator()(int argc, const char** argv) {
 	}
 	
 	return "Incorrect input.";
+}
+
+int DijckstraApplication::CastNumber(const char* num) {
+    unsigned i = 0;
+    int x;
+    while (num[i] != '\0') {
+        if (!isdigit(num[i]))
+            throw std::runtime_error("not a number");
+        ++i;
+    }
+    try {
+        x = std::stoi(num);
+    }
+    catch (std::out_of_range& err) {
+        throw std::runtime_error("too big number");
+    }
+    if (x > 50)
+        throw std::runtime_error("too big number");
+    return x;
 }

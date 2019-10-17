@@ -75,7 +75,7 @@ std::vector<int> Dijckstra::AllShortestPathsFrom(int vertex) {
 	} while (min_index < 10000);
 
 	std::cout << "The shortest distance:" << '\n';
-	for (int i = 0; i < d_.size(); i++) {
+	for (size_t i = 0; i < d_.size(); i++) {
 		std::cout << d_[i] << " ";
 	}
     std::cout << '\n';

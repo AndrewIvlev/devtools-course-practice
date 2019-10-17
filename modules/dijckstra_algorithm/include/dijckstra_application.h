@@ -12,6 +12,7 @@ class DijckstraApplication {
     std::string operator()(int argc, const char** argv);
  private:
     std::string Info();
+    int CastNumber(const char* num);
 };
 
 #endif  // MODULES_DIAMETER_OF_THE_GRAPH_INCLUDE_DIJCKSTRA_APPLICATION_H_
