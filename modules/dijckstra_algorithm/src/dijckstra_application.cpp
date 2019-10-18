@@ -16,8 +16,8 @@ std::string DijckstraApplication::Info() {
     return res;
 }
 std::string DijckstraApplication::operator()(int argc, const char** argv) {
-	if (argc == 1) {
-		return "Input: app_dijckstra_algorithm  help for instruction";
+	if (argc <= 1) {
+		return Info();
 	}
 	
     if (argc == 2) {
