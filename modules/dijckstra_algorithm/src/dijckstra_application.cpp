@@ -8,7 +8,8 @@ std::string DijckstraApplication::Info() {
     std::string res = "Dijckstra's Algorithm.\n";
     res += "Please, enter distance between vertex in the following format:";
     res += "$ <appname> init graph <number of vertex>\n";
-    res += "$ <appname> add <index first vertex> <index second vertex> <weight>\n";
+    res += "$ <appname> add <index first vertex>";
+    res += " <index second vertex> <weight>\n";
     res += "For show shortest path between two vertex:\n";
     res += "$ <appname> sp <index first vertex> <index second vertex>\n";
     res += "For start calculation:\n";
@@ -19,22 +20,23 @@ std::string DijckstraApplication::operator()(int argc, const char** argv) {
     if (argc <= 1) {
         return Info();
     }
-	
+
     if (argc == 2) {
         if (strcmp(argv[1], "help") == 0) {
             return Info();
         }
         return "Incorrect input.";
     }
-	
-	if (argc == 3) {
-        if (strcmp(argv[1], "start") == 0 && strcmp(argv[2], "calculation") == 0) {
+
+    if (argc == 3) {
+        if (strcmp(argv[1], "start") == 0 && 
+            strcmp(argv[2], "calculation") == 0) {
             return Info();
         }
         return "Incorrect input.";
     }
-	
-	if (argc == 4) {
+
+    if (argc == 4) {
         if (strcmp(argv[1], "init") == 0 && strcmp(argv[2], "graph") == 0) {
             try {
                 vertex_num = CastNumber(argv[3]);
@@ -51,7 +53,8 @@ std::string DijckstraApplication::operator()(int argc, const char** argv) {
         } else if (strcmp(argv[1], "sp") == 0) {
             try {
             Dijckstra g(std::move(m), vertex_num);
-                std::vector<int> sp = g.GetShortestPathBetween(CastNumber(argv[2]), CastNumber(argv[3]));
+                std::vector<int> sp = g.GetShortestPathBetween(
+                    CastNumber(argv[2]), CastNumber(argv[3]));
                 std::string res = "";
                 for (size_t i = 0; i < sp.size(); i++) {
                     res += std::to_string(sp[i]);
