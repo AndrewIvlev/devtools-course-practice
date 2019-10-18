@@ -11,8 +11,8 @@ class DijckstraApplication {
     DijckstraApplication() = default;
     std::string operator()(int argc, const char** argv);
  private:
-	graph_weights_matrix m;
-	int vertex_num;
+    graph_weights_matrix m;
+    int vertex_num;
     std::string Info();
     int CastNumber(const char* num);
 };
