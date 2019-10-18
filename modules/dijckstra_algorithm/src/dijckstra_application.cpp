@@ -1,6 +1,8 @@
 // Copyright 2019 Ivlev Andrey
 
 #include <cstring>
+#include <string>
+#include <vector>
 #include <stdexcept>
 #include "include/dijckstra_application.h"
 
@@ -29,7 +31,7 @@ std::string DijckstraApplication::operator()(int argc, const char** argv) {
     }
 
     if (argc == 3) {
-        if (strcmp(argv[1], "start") == 0 && 
+        if (strcmp(argv[1], "start") == 0 &&
             strcmp(argv[2], "calculation") == 0) {
             return Info();
         }

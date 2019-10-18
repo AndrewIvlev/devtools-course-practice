@@ -35,9 +35,9 @@ void Dijckstra::PrintMatrix() {
 void Dijckstra::InitVertexAndDist() {
     int temp;
 
-    for (int i = 0; i<count_; i++) {
+    for (int i = 0; i < count_; i++) {
         a_[i][i] = 0;
-        for (int j = i + 1; j<count_; j++) {
+        for (int j = i + 1; j < count_; j++) {
             std::cout << "Input distance %d" << i + 1 << " - %d: " << j + 1;
             std::cin >> temp;
             a_[i][j] = temp;
@@ -63,8 +63,7 @@ std::vector<int> Dijckstra::AllShortestPathsFrom(int vertex) {
         }
         if (min_index != 10000) {
             for (int i = 0; i < count_; i++) {
-                if (a_[min_index][i] > 0)
-                {
+                if (a_[min_index][i] > 0) {
                     int temp = min + a_[min_index][i];
                     if (temp < d_[i]) {
                         d_[i] = temp;
