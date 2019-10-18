@@ -7,7 +7,7 @@
 std::string DijckstraApplication::Info() {
     std::string res = "Dijckstra's Algorithm.\n";
     res += "Please, enter distance between vertex in the following format:";
-	res += "$ <appname> init graph <number of veterx>\n";
+	res += "$ <appname> init graph <number of vertex>\n";
     res += "$ <appname> add <index first vertex> <index second vertex> <weight>\n";
     res += "For show shortest path between two vertex:\n";
 	res += "$ <appname> sp <index first vertex> <index second vertex>\n";
@@ -16,6 +16,10 @@ std::string DijckstraApplication::Info() {
     return res;
 }
 std::string DijckstraApplication::operator()(int argc, const char** argv) {
+	if (argc == 1) {
+		return "Input <appname> help for instruction";
+	}
+	
     if (argc == 2) {
         if (strcmp(argv[1], "help") == 0) {
             return Info();
@@ -29,6 +33,7 @@ std::string DijckstraApplication::operator()(int argc, const char** argv) {
         }
     	return "Incorrect input.";
     }
+	
 	if (argc == 4) {
         if (strcmp(argv[1], "init") == 0 && strcmp(argv[2], "graph") == 0) {
 	        try {

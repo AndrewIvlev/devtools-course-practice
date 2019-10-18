@@ -9,6 +9,7 @@ add_test(
     COMMAND ${APPLICATION}
 )
 set_tests_properties (${prefix}_can_Run PROPERTIES
+    PASS_REGULAR_EXPRESSION "Input: ${APPLICATION} help for instruction"
     LABELS "${MODULE}")
 
 add_test(
