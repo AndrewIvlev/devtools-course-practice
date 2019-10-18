@@ -2,15 +2,16 @@
 
 #include <gtest/gtest.h>
 
+#include <string>
 #include <vector>
 
 #include "include/dijckstra_application.h"
 
 class DijckstraApplicationTest : public ::testing::Test {
-private:
+ private:
     std::string res_;
     DijckstraApplication dijckstra_app;
-	
+
  protected:
     void Act(std::vector<std::string> argv_) {
         std::vector<const char*> new_argv_;
@@ -112,7 +113,7 @@ private:
         argv = &new_argv_.front();
         argc = static_cast<int>(vec_arg.size() + 1);
         res_ = dijckstra_app(argc, argv);
-   	
+
         new_argv_.clear();
         new_argv_.push_back("appname");
         for (size_t i = 0; i < argv_.size(); i++) {
