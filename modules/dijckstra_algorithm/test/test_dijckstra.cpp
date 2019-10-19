@@ -69,7 +69,7 @@ TEST_F(DijckstraTest,
 TEST_F(DijckstraTest,
     can_print_matrix_weights) {
     // Arrange
-	bool expected = true;
+    bool expected = true;
     l = {
         { 0, 7, 9, 0, 0, 14 },
         { 7, 0, 10, 15, 0, 0 },
