@@ -58,7 +58,7 @@ std::string DijckstraApplication::operator()(int argc, const char** argv) {
                 int vertex1 = CastNumber(argv[2]);
                 int vertex2 = CastNumber(argv[3]);
                 if (vertex1 < 0 || vertex2 < 0 ||
-                    vertex1 > vertex_num - 1 || vertex2 > vertex_num) {
+                    vertex1 > vertex_num - 1 || vertex2 > vertex_num - 1) {
                     return "Incorrect input.";
                 }
                 std::vector<int> sp = g.GetShortestPathBetween(
