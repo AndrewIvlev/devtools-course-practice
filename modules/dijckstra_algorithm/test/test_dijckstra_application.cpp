@@ -186,7 +186,7 @@ TEST_F(DijckstraApplicationTest, Validation_help_information) {
     expected_result += " <index second vertex> <weight>\n";
     expected_result += "For show shortest path between two vertex:\n";
     expected_result += "$ <appname> sp <index first vertex>";
-    expected_result += "$ <index second vertex>\n";
+    expected_result += " <index second vertex>\n";
     expected_result += "For start calculation:\n";
     expected_result += "$ <appname> start calculation\n";
     std::vector<std::string> vec_arg = {"help"};
