@@ -55,8 +55,14 @@ std::string DijckstraApplication::operator()(int argc, const char** argv) {
         } else if (strcmp(argv[1], "sp") == 0) {
             try {
             Dijckstra g(std::move(m), vertex_num);
+                int vertex1 = CastNumber(argv[2]);
+                int vertex2 = CastNumber(argv[3]);
+                if (vertex1 < 0 || vertex2 < 0 ||
+                    vertex1 > vertex_num - 1 || vertex2 > vertex_num) {
+                    return "Incorrect input.";
+                }
                 std::vector<int> sp = g.GetShortestPathBetween(
-                    CastNumber(argv[2]), CastNumber(argv[3]));
+                    vertex1, vertex2);
                 std::string res = "";
                 for (size_t i = 0; i < sp.size(); i++) {
                     res += std::to_string(sp[i]);
