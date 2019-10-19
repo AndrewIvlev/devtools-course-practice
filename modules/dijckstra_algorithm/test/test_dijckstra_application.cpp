@@ -167,7 +167,7 @@ TEST_F(DijckstraApplicationTest, Validation_many_arguments) {
 TEST_F(DijckstraApplicationTest, Validation_when_one_vertex_is_incorrect) {
     // Arrange
     DijckstraApplication calc;
-    std::string expected_result = "Incorrect input.";
+    std::string expected_result = "Error with argument 2: not a number";
     std::vector<std::string> vec_arg = {"sp", "1", "-7"};
 
     Act(vec_arg);
