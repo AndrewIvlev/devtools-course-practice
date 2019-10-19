@@ -42,6 +42,7 @@ std::string DijckstraApplication::operator()(int argc, const char** argv) {
         if (strcmp(argv[1], "init") == 0 && strcmp(argv[2], "graph") == 0) {
             try {
                 vertex_num = CastNumber(argv[3]);
+                if (vertex_num <= 0) return "Error: graph has no vertexes";
                 m.resize(vertex_num);
                 for (int i = 0; i < vertex_num; ++i) {
                     m[i].resize(vertex_num);

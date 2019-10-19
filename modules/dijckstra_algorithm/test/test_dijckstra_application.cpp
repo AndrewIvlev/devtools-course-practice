@@ -133,7 +133,6 @@ class DijckstraApplicationTest : public ::testing::Test {
 
 TEST_F(DijckstraApplicationTest, Validation_incorrect_input) {
     // Arrange
-    DijckstraApplication calc;
     std::string expected_result = "Incorrect input.";
     std::vector<std::string> vec_arg = {"sdsfp", "02", "asd5"};
 
@@ -144,7 +143,6 @@ TEST_F(DijckstraApplicationTest, Validation_incorrect_input) {
 
 TEST_F(DijckstraApplicationTest, Validate_less_arguments) {
     // Arrange
-    DijckstraApplication calc;
     std::string expected_result = "Incorrect input.";
     std::vector<std::string> vec_arg = {"sp"};
 
@@ -155,7 +153,6 @@ TEST_F(DijckstraApplicationTest, Validate_less_arguments) {
 
 TEST_F(DijckstraApplicationTest, Validation_many_arguments) {
     // Arrange
-    DijckstraApplication calc;
     std::string expected_result = "Incorrect input.";
     std::vector<std::string> vec_arg = {"sp", "02", "asd5", "2", "32", "13"};
 
@@ -166,7 +163,6 @@ TEST_F(DijckstraApplicationTest, Validation_many_arguments) {
 
 TEST_F(DijckstraApplicationTest, Validation_when_one_vertex_is_incorrect) {
     // Arrange
-    DijckstraApplication calc;
     std::string expected_result = "Error with argument 2: not a number";
     std::vector<std::string> vec_arg = {"sp", "1", "-7"};
 
@@ -177,7 +173,6 @@ TEST_F(DijckstraApplicationTest, Validation_when_one_vertex_is_incorrect) {
 
 TEST_F(DijckstraApplicationTest, Validation_help_information) {
     // Arrange
-    DijckstraApplication calc;
     std::string expected_result = "Dijckstra's Algorithm.\n";
     expected_result += "Please, enter distance between";
     expected_result += " vertex in the following format:";
@@ -199,11 +194,30 @@ TEST_F(DijckstraApplicationTest, Validation_help_information) {
 TEST_F(DijckstraApplicationTest,
     Shortest_path_between_two_vertex_which_equals) {
     // Arrange
-    DijckstraApplication calc;
     std::string expected_result = "0";
     std::vector<std::string> vec_arg = {"sp", "2", "2"};
 
     Act(vec_arg);
 
     Assert(expected_result);
+}
+
+TEST_F(DijckstraApplicationTest,
+    Cant_do_work_without_vertexes) {
+    // Arrange
+    DijckstraApplication app;
+    std::string expected_result = "Error: graph has no vertexes";
+    std::vector<const char*> new_argv_;
+    std::vector<std::string> vec_arg = {"init", "graph", "0"};
+    new_argv_.push_back("appname");
+    for (size_t i = 0; i < vec_arg.size(); i++) {
+        new_argv_.push_back(vec_arg[i].c_str());
+    }
+    const char** argv = &new_argv_.front();
+    int argc = static_cast<int>(vec_arg.size() + 1);
+
+    // Act
+    std::string actual_result = app(argc, argv);
+
+    EXPECT_EQ(expected_result, actual_result);
 }
