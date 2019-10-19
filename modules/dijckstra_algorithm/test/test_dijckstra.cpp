@@ -170,7 +170,7 @@ TEST_F(DijckstraTest,
     };
     init();
     Dijckstra g(std::move(a), n);
-    std::vector<int> expected_v {};
+    std::vector<int> expected_v { 11, 12, 2, 13, 9, 0 };
 
     // Act
     std::vector<int> actual_v = g.AllShortestPathsFrom(5);

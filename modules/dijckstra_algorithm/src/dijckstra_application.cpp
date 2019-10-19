@@ -77,6 +77,7 @@ std::string DijckstraApplication::operator()(int argc, const char** argv) {
         try {
             m[CastNumber(argv[2])][CastNumber(argv[3])] = CastNumber(argv[4]);
             m[CastNumber(argv[3])][CastNumber(argv[2])] = CastNumber(argv[4]);
+        	return "";
         }
         catch(const std::runtime_error& re) {
             return "Error with argument " +
@@ -84,7 +85,7 @@ std::string DijckstraApplication::operator()(int argc, const char** argv) {
         }
     }
 
-    return "";
+    return "Incorrect input.";
 }
 
 int DijckstraApplication::CastNumber(const char* num) {
