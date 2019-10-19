@@ -126,7 +126,7 @@ class DijckstraApplicationTest : public ::testing::Test {
         res_ = dijckstra_app(argc, argv);
     }
 
-	void Act2(std::vector<std::string> argv_) {
+    void Act2(std::vector<std::string> argv_) {
         std::vector<const char*> new_argv_;
         new_argv_.push_back("appname");
         for (size_t i = 0; i < argv_.size(); i++) {
@@ -220,7 +220,7 @@ TEST_F(DijckstraApplicationTest,
     std::string expected_result = "Error: graph has no vertexes";
     std::vector<std::string> vec_arg = {"init", "graph", "0"};
 
-	Act2(vec_arg);
-	
+    Act2(vec_arg);
+
     Assert(expected_result);
 }
