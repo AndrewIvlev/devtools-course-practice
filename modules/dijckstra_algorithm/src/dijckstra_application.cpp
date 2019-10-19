@@ -83,7 +83,7 @@ std::string DijckstraApplication::operator()(int argc, const char** argv) {
         try {
             m[CastNumber(argv[2])][CastNumber(argv[3])] = CastNumber(argv[4]);
             m[CastNumber(argv[3])][CastNumber(argv[2])] = CastNumber(argv[4]);
-        	return "";
+            return "";
         }
         catch(const std::runtime_error& re) {
             return "Error with argument " +
