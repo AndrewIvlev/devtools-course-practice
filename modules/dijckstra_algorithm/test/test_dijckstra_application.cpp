@@ -221,3 +221,33 @@ TEST_F(DijckstraApplicationTest,
 
     EXPECT_EQ(expected_result, actual_result);
 }
+
+TEST_F(DijckstraApplicationTest,
+    Work_correctly_with_two_vertex) {
+    // Arrange
+    DijckstraApplication app;
+    std::string expected_result = "7";
+    std::vector<const char*> new_argv_;
+    std::vector<std::string> vec_arg = {"init", "graph", "0"};
+    new_argv_.push_back("appname");
+    for (size_t i = 0; i < vec_arg.size(); i++) {
+        new_argv_.push_back(vec_arg[i].c_str());
+    }
+    const char** argv = &new_argv_.front();
+    int argc = static_cast<int>(vec_arg.size() + 1);
+    vec_arg = {"add", "0", "1", "7"};
+    new_argv_.clear();
+    new_argv_.push_back("appname");
+    for (size_t i = 0; i < vec_arg.size(); i++) {
+        new_argv_.push_back(vec_arg[i].c_str());
+    }
+    argv = &new_argv_.front();
+    argc = static_cast<int>(vec_arg.size() + 1);
+    app(argc, argv);
+    vec_arg = {"sp", "0", "1"};
+
+    // Act
+    std::string actual_result = app(argc, argv);
+
+    EXPECT_EQ(expected_result, actual_result);
+}
