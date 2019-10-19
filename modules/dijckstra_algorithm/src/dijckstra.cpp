@@ -37,6 +37,7 @@ bool Dijckstra::PrintMatrix() {
 std::vector<int> Dijckstra::AllShortestPathsFrom(int vertex) {
     std::vector<int> d_(count_, 10000);
     std::vector<int> v_(count_, 1);
+    if (vertex < 0 || vertex > count_) return v_;
     d_[vertex] = 0;
 
     int min_index;

@@ -142,6 +142,58 @@ TEST_F(DijckstraApplicationTest, Validation_incorrect_input) {
     Assert(expected_result);
 }
 
+TEST_F(DijckstraApplicationTest, Validate_less_arguments) {
+    // Arrange
+    DijckstraApplication calc;
+    std::string expected_result = "Incorrect input.";
+    std::vector<std::string> vec_arg = {"sp"};
+
+    Act(vec_arg);
+
+    Assert(expected_result);
+}
+
+TEST_F(DijckstraApplicationTest, Validation_many_arguments) {
+    // Arrange
+    DijckstraApplication calc;
+    std::string expected_result = "Incorrect input.";
+    std::vector<std::string> vec_arg = {"sp", "02", "asd5", "2", "32", "13"};
+
+    Act(vec_arg);
+
+    Assert(expected_result);
+}
+
+TEST_F(DijckstraApplicationTest, Validation_zero_vertex_is_incorrect) {
+    // Arrange
+    DijckstraApplication calc;
+    std::string expected_result = "Incorrect input.";
+    std::vector<std::string> vec_arg = {"sp", "0", "0"};
+
+    Act(vec_arg);
+
+    Assert(expected_result);
+}
+
+TEST_F(DijckstraApplicationTest, Validation_help_information) {
+    // Arrange
+    DijckstraApplication calc;
+    std::string expected_result = "Dijckstra's Algorithm.\n";
+    expected_result += "Please, enter distance between vertex in the following format:";
+    expected_result += "$ <appname> init graph <number of vertex>\n";
+    expected_result += "$ <appname> add <index first vertex>";
+    expected_result += " <index second vertex> <weight>\n";
+    expected_result += "For show shortest path between two vertex:\n";
+    expected_result += "$ <appname> sp <index first vertex> <index second vertex>\n";
+    expected_result += "For start calculation:\n";
+    expected_result += "$ <appname> start calculation\n";
+    std::vector<std::string> vec_arg = {"help"};
+
+    Act(vec_arg);
+
+    Assert(expected_result);
+}
+
 TEST_F(DijckstraApplicationTest,
     Shortest_path_between_two_vertex_which_equals) {
     // Arrange
