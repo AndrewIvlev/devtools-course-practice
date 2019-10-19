@@ -18,7 +18,6 @@ class Dijckstra {
     Dijckstra& operator=(const Dijckstra& g);
     std::vector<int> AllShortestPathsFrom(int vertex);
     std::vector<int> GetShortestPathBetween(int vertex1, int vertex2);
-    void PrintMatrix();
-    void InitVertexAndDist();
+    bool PrintMatrix();
 };
 #endif  // MODULES_DIJCKSTRA_ALGORITHM_INCLUDE_DIJCKSTRA_H_

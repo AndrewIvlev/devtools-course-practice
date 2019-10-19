@@ -24,26 +24,14 @@ Dijckstra::Dijckstra(const Dijckstra& g): count_(g.count_) {
             a_[i].push_back(g.a_[i][j]);
 }
 
-void Dijckstra::PrintMatrix() {
+bool Dijckstra::PrintMatrix() {
     for (int i = 0; i < count_; ++i) {
         for (int j = 0; j < count_; ++j)
             std::cout << a_[i][j] << " ";
         std::cout << '\n';
     }
-}
 
-void Dijckstra::InitVertexAndDist() {
-    int temp;
-
-    for (int i = 0; i < count_; i++) {
-        a_[i][i] = 0;
-        for (int j = i + 1; j < count_; j++) {
-            std::cout << "Input distance %d" << i + 1 << " - %d: " << j + 1;
-            std::cin >> temp;
-            a_[i][j] = temp;
-            a_[j][i] = temp;
-        }
-    }
+    return true;
 }
 
 std::vector<int> Dijckstra::AllShortestPathsFrom(int vertex) {
