@@ -139,7 +139,7 @@ class DijckstraApplicationTest : public ::testing::Test {
 
     void Act3(std::vector<std::string> argv_) {
         std::vector<const char*> new_argv_;
-        std::vector<std::string> vec_arg = {"init", "graph", "0"};
+        std::vector<std::string> vec_arg = {"init", "graph", "2"};
         new_argv_.push_back("appname");
         for (size_t i = 0; i < vec_arg.size(); i++) {
             new_argv_.push_back(vec_arg[i].c_str());
