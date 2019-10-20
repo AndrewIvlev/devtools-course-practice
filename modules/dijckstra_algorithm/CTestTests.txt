@@ -60,6 +60,14 @@ set_tests_properties (${prefix}_Validation_when_both_vertex_is_incorrect PROPERT
     LABELS "${MODULE}")
 
 add_test(
+    NAME ${prefix}_Validation_help_information_after_main_command_without_arguments
+    COMMAND ${APPLICATION}
+)
+set_tests_properties (${prefix}_Validation_help_information_after_main_command_without_arguments PROPERTIES
+    PASS_REGULAR_EXPRESSION "Dijckstra's Algorithm.\n"
+    LABELS "${MODULE}")
+
+add_test(
     NAME ${prefix}_Validation_help_information
     COMMAND ${APPLICATION} help
 )
@@ -81,4 +89,20 @@ add_test(
 )
 set_tests_properties (${prefix}_Cant_do_work_without_vertexes PROPERTIES
     PASS_REGULAR_EXPRESSION "Error: graph has no vertexes"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_Can_init_very_big_graph
+    COMMAND ${APPLICATION} init graph 100
+)
+set_tests_properties (${prefix}_Can_init_very_big_graph PROPERTIES
+    PASS_REGULAR_EXPRESSION "Graph successfully initialized"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_Cant_init_very_big_graph_threshold
+    COMMAND ${APPLICATION} init graph 101
+)
+set_tests_properties (${prefix}_Cant_init_very_big_graph_threshold PROPERTIES
+    PASS_REGULAR_EXPRESSION "Error with argument 2: too big number"
     LABELS "${MODULE}")

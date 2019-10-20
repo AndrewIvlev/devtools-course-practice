@@ -38,6 +38,7 @@ std::string DijckstraApplication::operator()(int argc, const char** argv) {
                     m[i].resize(vertex_num);
                     for (int j = 0; j < vertex_num; ++j) m[i][j] = 0;
                 }
+                return "Graph successfully initialized";
             }
             catch(const std::runtime_error& re) {
                 return "Error with argument " +
@@ -103,7 +104,7 @@ int DijckstraApplication::CastNumber(const char* num) {
     catch (std::out_of_range& err) {
         throw std::runtime_error("too big number");
     }
-    if (x > 50)
+    if (x > 100)
         throw std::runtime_error("too big number");
     return x;
 }

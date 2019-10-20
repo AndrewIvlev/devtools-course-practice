@@ -221,10 +221,34 @@ TEST_F(DijckstraApplicationTest, Validation_help_information) {
 }
 
 TEST_F(DijckstraApplicationTest,
+    Validation_help_information_after_main_command_without_arguments) {
+    // Arrange
+    DijckstraApplication app;
+    std::vector<const char*> new_argv_;
+    new_argv_.push_back("appname");
+    const char** argv = &new_argv_.front();
+    std::string expected_result = "Dijckstra's Algorithm.\n";
+    expected_result += "Please, enter distance between";
+    expected_result += " vertex in the following format:";
+    expected_result += "$ <appname> init graph <number of vertex>\n";
+    expected_result += "$ <appname> add <index first vertex>";
+    expected_result += " <index second vertex> <weight>\n";
+    expected_result += "For show shortest path between two vertex:\n";
+    expected_result += "$ <appname> sp <index first vertex>";
+    expected_result += " <index second vertex>\n";
+
+    // Act
+    std::string actual_result = app(1, argv);
+
+    // Assert
+    EXPECT_EQ(expected_result, actual_result);
+}
+
+TEST_F(DijckstraApplicationTest,
     Shortest_path_between_two_vertex_which_equals) {
     // Arrange
     std::string expected_result = "0";
-    std::vector<std::string> vec_arg = {"sp", "2", "2"};
+    std::vector<std::string> vec_arg = { };
 
     Act(vec_arg);
 
@@ -267,9 +291,30 @@ TEST_F(DijckstraApplicationTest,
 TEST_F(DijckstraApplicationTest,
     Cant_do_work_without_vertexes) {
     // Arrange
-    DijckstraApplication app;
     std::string expected_result = "Error: graph has no vertexes";
     std::vector<std::string> vec_arg = {"init", "graph", "0"};
+
+    Act2(vec_arg);
+
+    Assert(expected_result);
+}
+
+TEST_F(DijckstraApplicationTest,
+    Can_init_very_big_graph) {
+    // Arrange
+    std::string expected_result = "Graph successfully initialized";
+    std::vector<std::string> vec_arg = {"init", "graph", "100"};
+
+    Act2(vec_arg);
+
+    Assert(expected_result);
+}
+
+TEST_F(DijckstraApplicationTest,
+    Cant_init_very_big_graph_threshold) {
+    // Arrange
+    std::string expected_result = "Error with argument 2: too big number";
+    std::vector<std::string> vec_arg = {"init", "graph", "101"};
 
     Act2(vec_arg);
 
