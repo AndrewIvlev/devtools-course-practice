@@ -76,15 +76,37 @@ std::string DijckstraApplication::operator()(int argc, const char** argv) {
     }
 
     if (strcmp(argv[1], "add") == 0) {
+        int vertex1 = 0;
+        int vertex2 = 0;
+        int weight = 0;
         try {
-            m[CastNumber(argv[2])][CastNumber(argv[3])] = CastNumber(argv[4]);
-            m[CastNumber(argv[3])][CastNumber(argv[2])] = CastNumber(argv[4]);
-            return "";
+            vertex1 = CastNumber(argv[2]);
+            if (vertex1 <= 0 || vertex1 > vertex_num)
+                return "Error with argument 1: not a vertex";
+        }
+        catch(const std::runtime_error& re) {
+            return "Error with argument " +
+                std::to_string(1) + ": " + re.what();
+        }
+        try {
+            vertex2 = CastNumber(argv[3]);
+            if (vertex2 <= 0 || vertex2 > vertex_num)
+                return "Error with argument 2: not a vertex";
         }
         catch(const std::runtime_error& re) {
             return "Error with argument " +
                 std::to_string(2) + ": " + re.what();
         }
+        try {
+            weight = CastNumber(argv[4]);
+        }
+        catch(const std::runtime_error& re) {
+            return "Error with argument " +
+                std::to_string(3) + ": " + re.what();
+        }
+        m[vertex1][vertex2] = weight;
+        m[vertex2][vertex1] = weight;
+        return "";
     }
 
     return "Incorrect input.";
