@@ -14,8 +14,6 @@ std::string DijckstraApplication::Info() {
     res += " <index second vertex> <weight>\n";
     res += "For show shortest path between two vertex:\n";
     res += "$ <appname> sp <index first vertex> <index second vertex>\n";
-    res += "For start calculation:\n";
-    res += "$ <appname> start calculation\n";
     return res;
 }
 std::string DijckstraApplication::operator()(int argc, const char** argv) {
@@ -25,14 +23,6 @@ std::string DijckstraApplication::operator()(int argc, const char** argv) {
 
     if (argc == 2) {
         if (strcmp(argv[1], "help") == 0) {
-            return Info();
-        }
-        return "Incorrect input.";
-    }
-
-    if (argc == 3) {
-        if (strcmp(argv[1], "start") == 0 &&
-            strcmp(argv[2], "calculation") == 0) {
             return Info();
         }
         return "Incorrect input.";
@@ -63,7 +53,7 @@ std::string DijckstraApplication::operator()(int argc, const char** argv) {
                 std::string res = "";
                 for (size_t i = 0; i < sp.size(); i++) {
                     res += std::to_string(sp[i]);
-                    if ( i != sp.size() - 1) res += ' ';
+                    if (i != sp.size() - 1) res += ' ';
                 }
                 return res;
             }
