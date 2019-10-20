@@ -130,3 +130,45 @@ TEST_F(DijckstraTest,
     // Assert
     EXPECT_EQ(expected_v, actual_v);
 }
+
+TEST_F(DijckstraTest,
+    validate_all_shortest_path_from_equal_vertex) {
+    // Arrange
+    init();
+    Dijckstra g(std::move(a), n);
+    std::vector<int> expected_v { 20, 15, 11, 0, 6, 13 };
+
+    // Act
+    std::vector<int> actual_v = g.AllShortestPathsFrom(3);
+
+    // Assert
+    EXPECT_EQ(expected_v, actual_v);
+}
+
+TEST_F(DijckstraTest,
+    validate_all_shortest_path_from_anouther_vertex) {
+    // Arrange
+    init();
+    Dijckstra g(std::move(a), n);
+    std::vector<int> expected_v { 20, 21, 11, 6, 0, 9 };
+
+    // Act
+    std::vector<int> actual_v = g.AllShortestPathsFrom(4);
+
+    // Assert
+    EXPECT_EQ(expected_v, actual_v);
+}
+
+TEST_F(DijckstraTest,
+    validate_all_shortest_path_from_first_vertex) {
+    // Arrange
+    init();
+    Dijckstra g(std::move(a), n);
+    std::vector<int> expected_v { 0, 7, 9, 20, 20, 11 };
+
+    // Act
+    std::vector<int> actual_v = g.AllShortestPathsFrom(0);
+
+    // Assert
+    EXPECT_EQ(expected_v, actual_v);
+}
