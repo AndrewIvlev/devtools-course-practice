@@ -16,6 +16,14 @@ class DijckstraTest : public ::testing::Test {
     void init() {
         a.resize(n);
         int i = 0;
+        l = {
+            { 0, 7, 9, 0, 0, 14 },
+            { 7, 0, 10, 15, 0, 0 },
+            { 9, 10, 0, 11, 0, 2 },
+            { 0, 15, 11, 0, 6, 0 },
+            { 0, 0, 0, 6, 0, 9 },
+            { 14, 0, 2, 0, 9, 0 }
+        };
         for (auto it : l) {
             a[i].insert(a[i].end(), it.begin(), it.end());
             i++;
@@ -25,14 +33,6 @@ class DijckstraTest : public ::testing::Test {
 
 TEST_F(DijckstraTest, check_correctness_of_Dijckstra_algorithm) {
     // Arrange
-    l = {
-        { 0, 7, 9, 0, 0, 14 },
-        { 7, 0, 10, 15, 0, 0 },
-        { 9, 10, 0, 11, 0, 2 },
-        { 0, 15, 11, 0, 6, 0 },
-        { 0, 0, 0, 6, 0, 9 },
-        { 14, 0, 2, 0, 9, 0 }
-    };
     init();
     Dijckstra g(std::move(a), n);
 
@@ -47,14 +47,6 @@ TEST_F(DijckstraTest, check_correctness_of_Dijckstra_algorithm) {
 TEST_F(DijckstraTest,
     check_correctness_of_Dijckstra_algorithm_from_other_vertex) {
     // Arrange
-    l = {
-        { 0, 7, 9, 0, 0, 14 },
-        { 7, 0, 10, 15, 0, 0 },
-        { 9, 10, 0, 11, 0, 2 },
-        { 0, 15, 11, 0, 6, 0 },
-        { 0, 0, 0, 6, 0, 9 },
-        { 14, 0, 2, 0, 9, 0 }
-    };
     init();
     Dijckstra g(std::move(a), n);
 
@@ -70,14 +62,6 @@ TEST_F(DijckstraTest,
     can_print_matrix_weights) {
     // Arrange
     bool expected = true;
-    l = {
-        { 0, 7, 9, 0, 0, 14 },
-        { 7, 0, 10, 15, 0, 0 },
-        { 9, 10, 0, 11, 0, 2 },
-        { 0, 15, 11, 0, 6, 0 },
-        { 0, 0, 0, 6, 0, 9 },
-        { 14, 0, 2, 0, 9, 0 }
-    };
     init();
     Dijckstra g(std::move(a), n);
 
@@ -91,14 +75,6 @@ TEST_F(DijckstraTest,
 TEST_F(DijckstraTest,
     equals_result_of_equals_dijckstra_objects) {
     // Arrange
-    l = {
-        { 0, 7, 9, 0, 0, 14 },
-        { 7, 0, 10, 15, 0, 0 },
-        { 9, 10, 0, 11, 0, 2 },
-        { 0, 15, 11, 0, 6, 0 },
-        { 0, 0, 0, 6, 0, 9 },
-        { 14, 0, 2, 0, 9, 0 }
-    };
     init();
     Dijckstra g(std::move(a), n);
     Dijckstra g_copy(g);
@@ -114,14 +90,6 @@ TEST_F(DijckstraTest,
 TEST_F(DijckstraTest,
     equals_result_of_equals_dijckstra_objects_by_operator_equality) {
     // Arrange
-    l = {
-        { 0, 7, 9, 0, 0, 14 },
-        { 7, 0, 10, 15, 0, 0 },
-        { 9, 10, 0, 11, 0, 2 },
-        { 0, 15, 11, 0, 6, 0 },
-        { 0, 0, 0, 6, 0, 9 },
-        { 14, 0, 2, 0, 9, 0 }
-    };
     init();
     Dijckstra g(std::move(a), n);
     Dijckstra g_copy(std::move(a), n);
@@ -138,14 +106,6 @@ TEST_F(DijckstraTest,
 TEST_F(DijckstraTest,
     validate_invalid_input_for_get_all_shortest_path) {
     // Arrange
-    l = {
-        { 0, 7, 9, 0, 0, 14 },
-        { 7, 0, 10, 15, 0, 0 },
-        { 9, 10, 0, 11, 0, 2 },
-        { 0, 15, 11, 0, 6, 0 },
-        { 0, 0, 0, 6, 0, 9 },
-        { 14, 0, 2, 0, 9, 0 }
-    };
     init();
     Dijckstra g(std::move(a), n);
     std::vector<int> expected_v(n, 1);
@@ -160,14 +120,6 @@ TEST_F(DijckstraTest,
 TEST_F(DijckstraTest,
     validate_all_shortest_path_from_one_vertex) {
     // Arrange
-    l = {
-        { 0, 7, 9, 0, 0, 14 },
-        { 7, 0, 10, 15, 0, 0 },
-        { 9, 10, 0, 11, 0, 2 },
-        { 0, 15, 11, 0, 6, 0 },
-        { 0, 0, 0, 6, 0, 9 },
-        { 14, 0, 2, 0, 9, 0 }
-    };
     init();
     Dijckstra g(std::move(a), n);
     std::vector<int> expected_v { 11, 12, 2, 13, 9, 0 };
