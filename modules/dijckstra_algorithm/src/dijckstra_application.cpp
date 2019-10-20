@@ -45,7 +45,7 @@ std::string DijckstraApplication::operator()(int argc, const char** argv) {
             }
         } else if (strcmp(argv[1], "sp") == 0) {
             int vertex1 = 0;
-        	int vertex2 = 0;
+            int vertex2 = 0;
             try {
                 vertex1 = CastNumber(argv[2]);
             }
