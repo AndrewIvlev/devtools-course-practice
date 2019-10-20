@@ -44,23 +44,31 @@ std::string DijckstraApplication::operator()(int argc, const char** argv) {
                     std::to_string(2) + ": " + re.what();
             }
         } else if (strcmp(argv[1], "sp") == 0) {
+            int vertex1 = 0;
+        	int vertex2 = 0;
             try {
-            Dijckstra g(std::move(m), vertex_num);
-                int vertex1 = CastNumber(argv[2]);
-                int vertex2 = CastNumber(argv[3]);
-                std::vector<int> sp = g.GetShortestPathBetween(
-                    vertex1, vertex2);
-                std::string res = "";
-                for (size_t i = 0; i < sp.size(); i++) {
-                    res += std::to_string(sp[i]);
-                    if (i != sp.size() - 1) res += ' ';
-                }
-                return res;
+                vertex1 = CastNumber(argv[2]);
+            }
+            catch(const std::runtime_error& re) {
+                return "Error with argument " +
+                    std::to_string(1) + ": " + re.what();
+            }
+            try {
+                vertex2 = CastNumber(argv[3]);
             }
             catch(const std::runtime_error& re) {
                 return "Error with argument " +
                     std::to_string(2) + ": " + re.what();
             }
+            Dijckstra g(std::move(m), vertex_num);
+            std::vector<int> sp = g.GetShortestPathBetween(
+                vertex1, vertex2);
+            std::string res = "";
+            for (size_t i = 0; i < sp.size(); i++) {
+                res += std::to_string(sp[i]);
+                if (i != sp.size() - 1) res += ' ';
+            }
+            return res;
         } else {
             return "Incorrect input.";
         }

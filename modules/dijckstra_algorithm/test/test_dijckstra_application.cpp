@@ -172,10 +172,30 @@ TEST_F(DijckstraApplicationTest, Validation_many_arguments) {
     Assert(expected_result);
 }
 
-TEST_F(DijckstraApplicationTest, Validation_when_one_vertex_is_incorrect) {
+TEST_F(DijckstraApplicationTest, Validation_when_first_vertex_is_incorrect) {
+    // Arrange
+    std::string expected_result = "Error with argument 1: not a number";
+    std::vector<std::string> vec_arg = {"sp", "-9", "3"};
+
+    Act(vec_arg);
+
+    Assert(expected_result);
+}
+
+TEST_F(DijckstraApplicationTest, Validation_when_second_vertex_is_incorrect) {
     // Arrange
     std::string expected_result = "Error with argument 2: not a number";
     std::vector<std::string> vec_arg = {"sp", "1", "-7"};
+
+    Act(vec_arg);
+
+    Assert(expected_result);
+}
+
+TEST_F(DijckstraApplicationTest, Validation_when_both_vertex_is_incorrect) {
+    // Arrange
+    std::string expected_result = "Error with argument 1: not a number";
+    std::vector<std::string> vec_arg = {"sp", "-99", "-7"};
 
     Act(vec_arg);
 
