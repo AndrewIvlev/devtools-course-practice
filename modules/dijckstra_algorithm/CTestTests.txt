@@ -21,7 +21,7 @@ set_tests_properties (${prefix}_Validation_incorrect_input PROPERTIES
 
 add_test(
     NAME ${prefix}_Validate_less_arguments
-    COMMAND ${APPLICATION} sdsfp 02 asd5
+    COMMAND ${APPLICATION} sp
 )
 set_tests_properties (${prefix}_Validate_less_arguments PROPERTIES
     PASS_REGULAR_EXPRESSION "Incorrect input."
@@ -29,7 +29,7 @@ set_tests_properties (${prefix}_Validate_less_arguments PROPERTIES
 
 add_test(
     NAME ${prefix}_Validation_many_arguments
-    COMMAND ${APPLICATION} sdsfp 02 asd5
+    COMMAND ${APPLICATION} sp 02 asd5 2 32 13
 )
 set_tests_properties (${prefix}_Validation_many_arguments PROPERTIES
     PASS_REGULAR_EXPRESSION "Incorrect input."
@@ -37,7 +37,7 @@ set_tests_properties (${prefix}_Validation_many_arguments PROPERTIES
 
 add_test(
     NAME ${prefix}_Validation_when_one_vertex_is_incorrect
-    COMMAND ${APPLICATION} sdsfp 02 asd5
+    COMMAND ${APPLICATION} sp 1 -7
 )
 set_tests_properties (${prefix}_Validation_when_one_vertex_is_incorrect PROPERTIES
     PASS_REGULAR_EXPRESSION "Incorrect input."
@@ -45,10 +45,10 @@ set_tests_properties (${prefix}_Validation_when_one_vertex_is_incorrect PROPERTI
 
 add_test(
     NAME ${prefix}_Validation_help_information
-    COMMAND ${APPLICATION} sdsfp 02 asd5
+    COMMAND ${APPLICATION} help
 )
 set_tests_properties (${prefix}_Validation_help_information PROPERTIES
-    PASS_REGULAR_EXPRESSION "Incorrect input."
+    PASS_REGULAR_EXPRESSION "Dijckstra's Algorithm.\n"
     LABELS "${MODULE}")
 
 add_test(
@@ -78,7 +78,7 @@ set_tests_properties (${prefix}_Shortest_path_between_two_vertex_reverse_directi
 
 add_test(
     NAME ${prefix}_Cant_do_work_without_vertexes
-    COMMAND ${APPLICATION} sp 2 2
+    COMMAND ${APPLICATION} init graph 0
 )
 set_tests_properties (${prefix}_Cant_do_work_without_vertexes PROPERTIES
     PASS_REGULAR_EXPRESSION "Error: graph has no vertexes"

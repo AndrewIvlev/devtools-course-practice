@@ -63,7 +63,7 @@ std::string DijckstraApplication::operator()(int argc, const char** argv) {
                 std::string res = "";
                 for (size_t i = 0; i < sp.size(); i++) {
                     res += std::to_string(sp[i]);
-                    if ( i != sp.size() - 1) res += " ";
+                    if ( i != sp.size() - 1) res += ' ';
                 }
                 return res;
             }
