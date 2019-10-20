@@ -122,3 +122,27 @@ add_test(
 set_tests_properties (${prefix}_Cant_init_very_big_graph_threshold PROPERTIES
     PASS_REGULAR_EXPRESSION "Error with argument 2: too big number"
     LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_Cant_add_weight_of_unexisting_first_vertex
+    COMMAND ${APPLICATION} init graph 101
+)
+set_tests_properties (${prefix}_Cant_add_weight_of_unexisting_first_vertex PROPERTIES
+    PASS_REGULAR_EXPRESSION "Error with argument 2: too big number"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_Cant_add_weight_of_unexisting_second_vertex
+    COMMAND ${APPLICATION} init graph 101
+)
+set_tests_properties (${prefix}_Cant_add_weight_of_unexisting_second_vertex PROPERTIES
+    PASS_REGULAR_EXPRESSION "Error with argument 2: too big number"
+    LABELS "${MODULE}")
+    
+add_test(
+    NAME ${prefix}_Cant_add_too_big_weight
+    COMMAND ${APPLICATION} init graph 101
+)
+set_tests_properties (${prefix}_Cant_add_too_big_weight PROPERTIES
+    PASS_REGULAR_EXPRESSION "Error with argument 2: too big number"
+    LABELS "${MODULE}")
