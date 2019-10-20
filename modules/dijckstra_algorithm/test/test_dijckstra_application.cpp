@@ -335,7 +335,7 @@ TEST_F(DijckstraApplicationTest,
 TEST_F(DijckstraApplicationTest,
     Cant_add_weight_of_unexisting_first_vertex_less_null) {
     // Arrange
-    std::string expected_result = "Error with argument 1: not a vertex";
+    std::string expected_result = "Error with argument 1: not a number";
     std::vector<std::string> vec_arg = {"init", "graph", "10"};
 
     Act2(vec_arg);
@@ -361,7 +361,7 @@ TEST_F(DijckstraApplicationTest,
 TEST_F(DijckstraApplicationTest,
     Cant_add_weight_of_unexisting_second_vertex_less_null) {
     // Arrange
-    std::string expected_result = "Error with argument 2: not a vertex";
+    std::string expected_result = "Error with argument 2: not a number";
     std::vector<std::string> vec_arg = {"init", "graph", "10"};
 
     Act2(vec_arg);
