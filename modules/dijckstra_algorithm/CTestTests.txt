@@ -44,11 +44,27 @@ set_tests_properties (${prefix}_Validation_when_first_vertex_is_incorrect PROPER
     LABELS "${MODULE}")
 
 add_test(
+    NAME ${prefix}_Validation_when_first_vertex_is_too_big
+    COMMAND ${APPLICATION} sp 101 3
+)
+set_tests_properties (${prefix}_Validation_when_first_vertex_is_too_big PROPERTIES
+    PASS_REGULAR_EXPRESSION "Error with argument 1: too big number"
+    LABELS "${MODULE}")
+
+add_test(
     NAME ${prefix}_Validation_when_second_vertex_is_incorrect
     COMMAND ${APPLICATION} sp 1 -7
 )
 set_tests_properties (${prefix}_Validation_when_second_vertex_is_incorrect PROPERTIES
     PASS_REGULAR_EXPRESSION "Error with argument 2: not a number"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_Validation_when_second_vertex_is_too_big
+    COMMAND ${APPLICATION} sp 2 101
+)
+set_tests_properties (${prefix}_Validation_when_second_vertex_is_too_big PROPERTIES
+    PASS_REGULAR_EXPRESSION "Error with argument 2: too big number"
     LABELS "${MODULE}")
 
 add_test(

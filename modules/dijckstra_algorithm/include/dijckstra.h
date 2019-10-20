@@ -12,7 +12,6 @@ class Dijckstra {
     graph_weights_matrix a_;
     int count_;  // count of vertex
  public:
-    Dijckstra();
     Dijckstra(graph_weights_matrix && a, int _n) noexcept;
     Dijckstra(const Dijckstra& g);
     Dijckstra& operator=(const Dijckstra& g);

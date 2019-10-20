@@ -182,10 +182,30 @@ TEST_F(DijckstraApplicationTest, Validation_when_first_vertex_is_incorrect) {
     Assert(expected_result);
 }
 
+TEST_F(DijckstraApplicationTest, Validation_when_first_vertex_is_too_big) {
+    // Arrange
+    std::string expected_result = "Error with argument 1: too big number";
+    std::vector<std::string> vec_arg = {"sp", "101", "3"};
+
+    Act(vec_arg);
+
+    Assert(expected_result);
+}
+
 TEST_F(DijckstraApplicationTest, Validation_when_second_vertex_is_incorrect) {
     // Arrange
     std::string expected_result = "Error with argument 2: not a number";
     std::vector<std::string> vec_arg = {"sp", "1", "-7"};
+
+    Act(vec_arg);
+
+    Assert(expected_result);
+}
+
+TEST_F(DijckstraApplicationTest, Validation_when_second_vertex_is_too_big) {
+    // Arrange
+    std::string expected_result = "Error with argument 2: too big number";
+    std::vector<std::string> vec_arg = {"sp", "2", "101"};
 
     Act(vec_arg);
 

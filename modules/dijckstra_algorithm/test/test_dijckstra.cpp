@@ -104,6 +104,22 @@ TEST_F(DijckstraTest,
 }
 
 TEST_F(DijckstraTest,
+    check_that_operator_equality_return_object) {
+    // Arrange
+    init();
+    Dijckstra g(std::move(a), n);
+    Dijckstra g_copy(std::move(a), n);
+
+    // Act
+    Dijckstra  g_new = g_copy = g;
+    std::vector<int> path_g = g.GetShortestPathBetween(5, 0);
+    std::vector<int> path_g_new = g_new.GetShortestPathBetween(5, 0);
+
+    // Assert
+    EXPECT_EQ(path_g, path_g_new);
+}
+
+TEST_F(DijckstraTest,
     validate_invalid_input_for_get_all_shortest_path) {
     // Arrange
     init();

@@ -9,14 +9,6 @@
 Dijckstra::Dijckstra(graph_weights_matrix && aa, int _n)
 noexcept : a_(std::move(aa)), count_(_n) {}
 
-Dijckstra::Dijckstra():count_(10) {
-    a_.resize(count_);
-    for (int i = 0; i < count_; ++i) {
-        a_[i].resize(count_);
-        for (int j = 0; j < count_; ++j) a_[i][j] = 0;
-    }
-}
-
 Dijckstra::Dijckstra(const Dijckstra& g): count_(g.count_) {
     a_.resize(count_);
     for (int i = 0; i < count_; ++i)
