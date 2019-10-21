@@ -59,6 +59,34 @@ TEST_F(DijckstraTest,
 }
 
 TEST_F(DijckstraTest,
+    validate_cant_get_sp_for_negative_vertex) {
+    // Arrange
+    init();
+    Dijckstra g(std::move(a), n);
+
+    // Act
+    std::vector<int> expected{ };
+    std::vector<int> actual = g.GetShortestPathBetween(-5, 0);
+
+    // Assert
+    EXPECT_EQ(expected, actual);
+}
+
+TEST_F(DijckstraTest,
+    validate_cant_get_sp_for_too_big_vertex) {
+    // Arrange
+    init();
+    Dijckstra g(std::move(a), n);
+
+    // Act
+    std::vector<int> expected{ };
+    std::vector<int> actual = g.GetShortestPathBetween(13, 0);
+
+    // Assert
+    EXPECT_EQ(expected, actual);
+}
+
+TEST_F(DijckstraTest,
     can_print_matrix_weights) {
     // Arrange
     bool expected = true;
