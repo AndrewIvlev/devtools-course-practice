@@ -232,6 +232,20 @@ TEST_F(DijckstraTest,
 }
 
 TEST_F(DijckstraTest,
+    get_shortest_path_method_validation_too_big_first_argument) {
+    // Arrange
+    init();
+    Dijckstra g(std::move(a), n);
+
+    // Act
+    std::vector<int> expected{ };
+    std::vector<int> actual = g.GetShortestPathBetween(33, 0);
+
+    // Assert
+    EXPECT_EQ(expected, actual);
+}
+
+TEST_F(DijckstraTest,
     get_shortest_path_method_validation_negative_second_argument) {
     // Arrange
     init();
@@ -246,6 +260,20 @@ TEST_F(DijckstraTest,
 }
 
 TEST_F(DijckstraTest,
+    get_shortest_path_method_validation_too_big_second_argument) {
+    // Arrange
+    init();
+    Dijckstra g(std::move(a), n);
+
+    // Act
+    std::vector<int> expected{ };
+    std::vector<int> actual = g.GetShortestPathBetween(4, 33);
+
+    // Assert
+    EXPECT_EQ(expected, actual);
+}
+
+TEST_F(DijckstraTest,
     get_shortest_path_method_validation_both_arguments_is_negative) {
     // Arrange
     init();
@@ -253,7 +281,21 @@ TEST_F(DijckstraTest,
 
     // Act
     std::vector<int> expected{ };
-    std::vector<int> actual = g.GetShortestPathBetween(4, -5);
+    std::vector<int> actual = g.GetShortestPathBetween(-4, -5);
+
+    // Assert
+    EXPECT_EQ(expected, actual);
+}
+
+TEST_F(DijckstraTest,
+    get_shortest_path_method_validation_both_arguments_too_big) {
+    // Arrange
+    init();
+    Dijckstra g(std::move(a), n);
+
+    // Act
+    std::vector<int> expected{ };
+    std::vector<int> actual = g.GetShortestPathBetween(33, 44);
 
     // Assert
     EXPECT_EQ(expected, actual);
