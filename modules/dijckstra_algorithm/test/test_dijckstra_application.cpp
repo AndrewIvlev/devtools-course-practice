@@ -287,6 +287,28 @@ TEST_F(DijckstraApplicationTest,
 }
 
 TEST_F(DijckstraApplicationTest,
+    Shortest_path_between_two_vertex_front_direction) {
+    // Arrange
+    std::string expected_result = "1 3 6 5";
+    std::vector<std::string> vec_arg = {"sp", "5", "0"};
+
+    Act(vec_arg);
+
+    Assert(expected_result);
+}
+
+TEST_F(DijckstraApplicationTest,
+    Shortest_path_between_two_vertex_reverse_direction) {
+    // Arrange
+    std::string expected_result = "1 3 6 5";
+    std::vector<std::string> vec_arg = {"sp", "0", "5"};
+
+    Act(vec_arg);
+
+    Assert(expected_result);
+}
+
+TEST_F(DijckstraApplicationTest,
     Cant_do_work_without_vertexes) {
     // Arrange
     std::string expected_result = "Error: graph has no vertexes";
