@@ -290,7 +290,7 @@ TEST_F(DijckstraApplicationTest,
     Shortest_path_between_two_vertex_front_direction) {
     // Arrange
     std::string expected_result = "0";
-    std::vector<std::string> vec_arg = {"sp", "0", "0"};
+    std::vector<std::string> vec_arg = {"sp", "0", "5"};
 
     Act(vec_arg);
 
@@ -301,7 +301,7 @@ TEST_F(DijckstraApplicationTest,
     Shortest_path_between_two_vertex_reverse_direction) {
     // Arrange
     std::string expected_result = "0";
-    std::vector<std::string> vec_arg = {"sp", "5", "5"};
+    std::vector<std::string> vec_arg = {"sp", "5", "0"};
 
     Act(vec_arg);
 
