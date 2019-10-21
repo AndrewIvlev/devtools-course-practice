@@ -92,14 +92,6 @@ set_tests_properties (${prefix}_Validation_help_information PROPERTIES
     LABELS "${MODULE}")
 
 add_test(
-    NAME ${prefix}_Shortest_path_between_two_vertex_which_equals
-    COMMAND ${APPLICATION} sp 2 2
-)
-set_tests_properties (${prefix}_Shortest_path_between_two_vertex_which_equals PROPERTIES
-    PASS_REGULAR_EXPRESSION "0"
-    LABELS "${MODULE}")
-
-add_test(
     NAME ${prefix}_Cant_do_work_without_vertexes
     COMMAND ${APPLICATION} init graph 0
 )
