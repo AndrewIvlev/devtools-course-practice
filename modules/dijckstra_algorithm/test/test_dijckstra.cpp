@@ -31,122 +31,6 @@ class DijckstraTest : public ::testing::Test {
     }
 };
 
-TEST_F(DijckstraTest, check_correctness_of_Dijckstra_algorithm) {
-    // Arrange
-    init();
-    Dijckstra g(std::move(a), n);
-
-    // Act
-    std::vector<int> expected{ 1, 3, 6, 5 };
-    std::vector<int> actual = g.GetShortestPathBetween(0, 5);
-
-    // Assert
-    EXPECT_EQ(expected, actual);
-}
-
-TEST_F(DijckstraTest,
-    check_correctness_of_Dijckstra_algorithm_from_other_vertex) {
-    // Arrange
-    init();
-    Dijckstra g(std::move(a), n);
-
-    // Act
-    std::vector<int> expected{ 1, 3, 6, 5 };
-    std::vector<int> actual = g.GetShortestPathBetween(5, 0);
-
-    // Assert
-    EXPECT_EQ(expected, actual);
-}
-
-TEST_F(DijckstraTest,
-    validate_cant_get_sp_for_negative_vertex) {
-    // Arrange
-    init();
-    Dijckstra g(std::move(a), n);
-
-    // Act
-    std::vector<int> expected{ };
-    std::vector<int> actual = g.GetShortestPathBetween(-5, 0);
-
-    // Assert
-    EXPECT_EQ(expected, actual);
-}
-
-TEST_F(DijckstraTest,
-    validate_cant_get_sp_for_too_big_vertex) {
-    // Arrange
-    init();
-    Dijckstra g(std::move(a), n);
-
-    // Act
-    std::vector<int> expected{ };
-    std::vector<int> actual = g.GetShortestPathBetween(13, 0);
-
-    // Assert
-    EXPECT_EQ(expected, actual);
-}
-
-TEST_F(DijckstraTest,
-    can_print_matrix_weights) {
-    // Arrange
-    bool expected = true;
-    init();
-    Dijckstra g(std::move(a), n);
-
-    // Act
-    bool actual = g.PrintMatrix();
-
-    // Assert
-    EXPECT_EQ(expected, actual);
-}
-
-TEST_F(DijckstraTest,
-    equals_result_of_equals_dijckstra_objects) {
-    // Arrange
-    init();
-    Dijckstra g(std::move(a), n);
-    Dijckstra g_copy(g);
-
-    // Act
-    std::vector<int> path_g = g.GetShortestPathBetween(5, 0);
-    std::vector<int> path_g_copy = g_copy.GetShortestPathBetween(5, 0);
-
-    // Assert
-    EXPECT_EQ(path_g, path_g_copy);
-}
-
-TEST_F(DijckstraTest,
-    equals_result_of_equals_dijckstra_objects_by_operator_equality) {
-    // Arrange
-    init();
-    Dijckstra g(std::move(a), n);
-    Dijckstra g_copy(std::move(a), n);
-
-    // Act
-    g_copy = g;
-    std::vector<int> path_g = g.GetShortestPathBetween(5, 0);
-    std::vector<int> path_g_copy = g_copy.GetShortestPathBetween(5, 0);
-
-    // Assert
-    EXPECT_EQ(path_g, path_g_copy);
-}
-
-TEST_F(DijckstraTest,
-    check_that_operator_equality_return_object) {
-    // Arrange
-    init();
-    Dijckstra g(std::move(a), n);
-    Dijckstra g_copy(std::move(a), n);
-
-    // Act
-    Dijckstra  g_new = g_copy = g;
-    std::vector<int> path_g = g.GetShortestPathBetween(5, 0);
-    std::vector<int> path_g_new = g_new.GetShortestPathBetween(5, 0);
-
-    // Assert
-    EXPECT_EQ(path_g, path_g_new);
-}
-
 TEST_F(DijckstraTest,
     validate_invalid_input_for_get_all_shortest_path) {
     // Arrange
@@ -215,4 +99,162 @@ TEST_F(DijckstraTest,
 
     // Assert
     EXPECT_EQ(expected_v, actual_v);
+}
+
+TEST_F(DijckstraTest,
+    can_print_matrix_weights) {
+    // Arrange
+    bool expected = true;
+    init();
+    Dijckstra g(std::move(a), n);
+
+    // Act
+    bool actual = g.PrintMatrix();
+
+    // Assert
+    EXPECT_EQ(expected, actual);
+}
+
+TEST_F(DijckstraTest,
+    equals_result_of_equals_dijckstra_objects) {
+    // Arrange
+    init();
+    Dijckstra g(std::move(a), n);
+    Dijckstra g_copy(g);
+
+    // Act
+    std::vector<int> path_g = g.GetShortestPathBetween(5, 0);
+    std::vector<int> path_g_copy = g_copy.GetShortestPathBetween(5, 0);
+
+    // Assert
+    EXPECT_EQ(path_g, path_g_copy);
+}
+
+TEST_F(DijckstraTest,
+    equals_result_of_equals_dijckstra_objects_by_operator_equality) {
+    // Arrange
+    init();
+    Dijckstra g(std::move(a), n);
+    Dijckstra g_copy(std::move(a), n);
+
+    // Act
+    g_copy = g;
+    std::vector<int> path_g = g.GetShortestPathBetween(5, 0);
+    std::vector<int> path_g_copy = g_copy.GetShortestPathBetween(5, 0);
+
+    // Assert
+    EXPECT_EQ(path_g, path_g_copy);
+}
+
+TEST_F(DijckstraTest,
+    check_that_operator_equality_return_object) {
+    // Arrange
+    init();
+    Dijckstra g(std::move(a), n);
+    Dijckstra g_copy(std::move(a), n);
+
+    // Act
+    Dijckstra  g_new = g_copy = g;
+    std::vector<int> path_g = g.GetShortestPathBetween(5, 0);
+    std::vector<int> path_g_new = g_new.GetShortestPathBetween(5, 0);
+
+    // Assert
+    EXPECT_EQ(path_g, path_g_new);
+}
+
+TEST_F(DijckstraTest, check_correctness_of_Dijckstra_algorithm) {
+    // Arrange
+    init();
+    Dijckstra g(std::move(a), n);
+
+    // Act
+    std::vector<int> expected{ 1, 3, 6, 5 };
+    std::vector<int> actual = g.GetShortestPathBetween(0, 5);
+
+    // Assert
+    EXPECT_EQ(expected, actual);
+}
+
+TEST_F(DijckstraTest,
+    check_correctness_of_Dijckstra_algorithm_from_other_vertex) {
+    // Arrange
+    init();
+    Dijckstra g(std::move(a), n);
+
+    // Act
+    std::vector<int> expected{ 1, 3, 6, 5 };
+    std::vector<int> actual = g.GetShortestPathBetween(5, 0);
+
+    // Assert
+    EXPECT_EQ(expected, actual);
+}
+
+TEST_F(DijckstraTest,
+    validate_cant_get_sp_for_negative_vertex) {
+    // Arrange
+    init();
+    Dijckstra g(std::move(a), n);
+
+    // Act
+    std::vector<int> expected{ };
+    std::vector<int> actual = g.GetShortestPathBetween(-5, 0);
+
+    // Assert
+    EXPECT_EQ(expected, actual);
+}
+
+TEST_F(DijckstraTest,
+    validate_cant_get_sp_for_too_big_vertex) {
+    // Arrange
+    init();
+    Dijckstra g(std::move(a), n);
+
+    // Act
+    std::vector<int> expected{ };
+    std::vector<int> actual = g.GetShortestPathBetween(13, 0);
+
+    // Assert
+    EXPECT_EQ(expected, actual);
+}
+
+TEST_F(DijckstraTest,
+    get_shortest_path_method_validation_negative_first_argument) {
+    // Arrange
+    init();
+    Dijckstra g(std::move(a), n);
+
+    // Act
+    std::vector<int> expected{ };
+    std::vector<int> actual = g.GetShortestPathBetween(-7, 0);
+
+    // Assert
+    EXPECT_EQ(expected, actual);
+}
+
+TEST_F(DijckstraTest,
+    get_shortest_path_method_validation_negative_second_argument) {
+    // Arrange
+    init();
+    Dijckstra g(std::move(a), n);
+
+    // Act
+    std::vector<int> expected{ };
+    std::vector<int> actual = g.GetShortestPathBetween(4, -5);
+
+    // Assert
+    EXPECT_EQ(expected, actual);
+}
+
+TEST_F(DijckstraTest,
+    get_shortest_path_method_validation_both_arguments_is_negative) {
+    // Arrange
+    init();
+    Dijckstra g(std::move(a), n);
+
+    // Act
+    std::vector<int> expected{ };
+    std::vector<int> actual = g.GetShortestPathBetween(4, -5);
+
+    // Assert
+    EXPECT_EQ(expected, actual);
 }
