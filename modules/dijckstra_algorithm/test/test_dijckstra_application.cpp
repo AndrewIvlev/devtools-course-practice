@@ -265,17 +265,6 @@ TEST_F(DijckstraApplicationTest,
 }
 
 TEST_F(DijckstraApplicationTest,
-    Shortest_path_between_two_vertex_which_equals) {
-    // Arrange
-    std::string expected_result = "0";
-    std::vector<std::string> vec_arg = {"sp", "2", "2"};
-
-    Act(vec_arg);
-
-    Assert(expected_result);
-}
-
-TEST_F(DijckstraApplicationTest,
     Shortest_path_between_two_close_vertex) {
     // Arrange
     std::string expected_result = "4 5";
