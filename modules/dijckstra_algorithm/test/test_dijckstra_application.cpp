@@ -405,3 +405,16 @@ TEST_F(DijckstraApplicationTest,
 
     Assert(expected_result);
 }
+
+TEST_F(DijckstraApplicationTest,
+    Cant_add_negative_weight) {
+    // Arrange
+    std::string expected_result = "Error with argument 3: not a number";
+    std::vector<std::string> vec_arg = {"init", "graph", "10"};
+
+    Act2(vec_arg);
+    vec_arg = {"add", "2", "3", "-7"};
+    Act2(vec_arg);
+
+    Assert(expected_result);
+}
