@@ -109,7 +109,7 @@ set_tests_properties (${prefix}_Can_init_very_big_graph PROPERTIES
 
 add_test(
     NAME ${prefix}_Cant_init_very_big_graph_threshold
-    COMMAND ${APPLICATION} init graph 101
+    COMMAND ${APPLICATION} init graph 111
 )
 set_tests_properties (${prefix}_Cant_init_very_big_graph_threshold PROPERTIES
     PASS_REGULAR_EXPRESSION "Error with argument 2: too big number"
