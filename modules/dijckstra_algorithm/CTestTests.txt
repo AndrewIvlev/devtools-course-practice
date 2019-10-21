@@ -98,30 +98,6 @@ add_test(
 set_tests_properties (${prefix}_Shortest_path_between_two_vertex_which_equals PROPERTIES
     PASS_REGULAR_EXPRESSION "0"
     LABELS "${MODULE}")
-    
-add_test(
-    NAME ${prefix}_Shortest_path_between_two_close_vertex
-    COMMAND ${APPLICATION} sp 3 3
-)
-set_tests_properties (${prefix}_Shortest_path_between_two_close_vertex PROPERTIES
-    PASS_REGULAR_EXPRESSION "0"
-    LABELS "${MODULE}")
-    
-add_test(
-    NAME ${prefix}_Shortest_path_between_two_vertex_front_direction
-    COMMAND ${APPLICATION} sp 0 0
-)
-set_tests_properties (${prefix}_Shortest_path_between_two_vertex_front_direction PROPERTIES
-    PASS_REGULAR_EXPRESSION "0"
-    LABELS "${MODULE}")
-    
-add_test(
-    NAME ${prefix}_Shortest_path_between_two_vertex_reverse_direction
-    COMMAND ${APPLICATION} sp 5 5
-)
-set_tests_properties (${prefix}_Shortest_path_between_two_vertex_reverse_direction PROPERTIES
-    PASS_REGULAR_EXPRESSION "0"
-    LABELS "${MODULE}")
 
 add_test(
     NAME ${prefix}_Cant_do_work_without_vertexes
@@ -144,53 +120,5 @@ add_test(
     COMMAND ${APPLICATION} init graph 101
 )
 set_tests_properties (${prefix}_Cant_init_very_big_graph_threshold PROPERTIES
-    PASS_REGULAR_EXPRESSION "Error with argument 2: too big number"
-    LABELS "${MODULE}")
-
-add_test(
-    NAME ${prefix}_Cant_add_weight_of_unexisting_first_vertex
-    COMMAND ${APPLICATION} init graph 101
-)
-set_tests_properties (${prefix}_Cant_add_weight_of_unexisting_first_vertex PROPERTIES
-    PASS_REGULAR_EXPRESSION "Error with argument 2: too big number"
-    LABELS "${MODULE}")
-
-add_test(
-    NAME ${prefix}_Cant_add_weight_of_unexisting_first_vertex_less_null
-    COMMAND ${APPLICATION} init graph 101
-)
-set_tests_properties (${prefix}_Cant_add_weight_of_unexisting_first_vertex_less_null PROPERTIES
-    PASS_REGULAR_EXPRESSION "Error with argument 2: too big number"
-    LABELS "${MODULE}")
-
-add_test(
-    NAME ${prefix}_Cant_add_weight_of_unexisting_second_vertex
-    COMMAND ${APPLICATION} init graph 101
-)
-set_tests_properties (${prefix}_Cant_add_weight_of_unexisting_second_vertex PROPERTIES
-    PASS_REGULAR_EXPRESSION "Error with argument 2: too big number"
-    LABELS "${MODULE}")
-
-add_test(
-    NAME ${prefix}_Cant_add_weight_of_unexisting_second_vertex_less_null
-    COMMAND ${APPLICATION} init graph 101
-)
-set_tests_properties (${prefix}_Cant_add_weight_of_unexisting_second_vertex_less_null PROPERTIES
-    PASS_REGULAR_EXPRESSION "Error with argument 2: too big number"
-    LABELS "${MODULE}")
-    
-add_test(
-    NAME ${prefix}_Cant_add_too_big_weight
-    COMMAND ${APPLICATION} init graph 101
-)
-set_tests_properties (${prefix}_Cant_add_too_big_weight PROPERTIES
-    PASS_REGULAR_EXPRESSION "Error with argument 2: too big number"
-    LABELS "${MODULE}")
-
-add_test(
-    NAME ${prefix}_Cant_add_negative_weight
-    COMMAND ${APPLICATION} init graph 101
-)
-set_tests_properties (${prefix}_Cant_add_negative_weight PROPERTIES
     PASS_REGULAR_EXPRESSION "Error with argument 2: too big number"
     LABELS "${MODULE}")
