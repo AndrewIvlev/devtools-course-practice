@@ -65,6 +65,8 @@ std::vector<int> Dijckstra::AllShortestPathsFrom(int vertex) {
 
 std::vector<int> Dijckstra::GetShortestPathBetween(int vertex1, int vertex2) {
     std::vector<int> result;
+    if (vertex1 < 0 || vertex1 > count_) return result;
+    if (vertex2 < 0 || vertex2 > count_) return result;
     if (vertex1 > vertex2) {
         std::swap(vertex1, vertex2);
     }
