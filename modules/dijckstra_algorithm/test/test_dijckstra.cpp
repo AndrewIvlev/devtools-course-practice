@@ -63,7 +63,7 @@ TEST_F(DijckstraTest, can_create_copy_dijckstra_object) {
         m[i].insert(m[i].end(), it.begin(), it.end());
         i++;
     }
-    Dijckstra g(std::move(m), 3)
+    Dijckstra g(std::move(m), 3);
 
     // Act & Assert
     ASSERT_NO_THROW(Dijckstra g_copy(g));
