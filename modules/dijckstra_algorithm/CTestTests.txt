@@ -130,3 +130,11 @@ add_test(
 set_tests_properties (${prefix}_Cant_init_very_big_graph_threshold PROPERTIES
     PASS_REGULAR_EXPRESSION "Error with argument 2: too big number"
     LABELS "${MODULE}")
+    
+add_test(
+    NAME ${prefix}_Cant_init_graph_with_out_of_range_vertex
+    COMMAND ${APPLICATION} init graph 999999999999999
+)
+set_tests_properties (${prefix}_Cant_init_graph_with_out_of_range_vertex PROPERTIES
+    PASS_REGULAR_EXPRESSION "Error with argument 2: out of range"
+    LABELS "${MODULE}")
