@@ -309,6 +309,17 @@ TEST_F(DijckstraApplicationTest,
 }
 
 TEST_F(DijckstraApplicationTest,
+    Cant_init_graph_with_out_of_range_vertex) {
+    // Arrange
+    std::string expected_result = "Error with argument 2: out of range";
+    std::vector<std::string> vec_arg = {"init", "graph", "999999999999999"};
+
+    Act2(vec_arg);
+
+    Assert(expected_result);
+}
+
+TEST_F(DijckstraApplicationTest,
     Cant_add_weight_of_unexisting_first_vertex) {
     // Arrange
     std::string expected_result = "Error with argument 1: not a vertex";
