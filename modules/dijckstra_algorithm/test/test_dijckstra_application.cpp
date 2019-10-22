@@ -389,7 +389,7 @@ TEST_F(DijckstraApplicationTest,
 TEST_F(DijckstraApplicationTest,
     Works_correct_with_two_vertex) {
     // Arrange
-    std::string expected_result = "0 1";
+    std::string expected_result = "1";
     std::vector<std::string> vec_arg = {"init", "graph", "2"};
  
     // Act
