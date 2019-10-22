@@ -80,7 +80,7 @@ add_test(
     COMMAND ${APPLICATION} sp 113 117
 )
 set_tests_properties (${prefix}_Validation_when_both_vertex_is_too_big PROPERTIES
-    PASS_REGULAR_EXPRESSION "Error with argument 1: not a number"
+    PASS_REGULAR_EXPRESSION "Error with argument 1: too big number"
     LABELS "${MODULE}")
 
 add_test(
@@ -112,7 +112,7 @@ add_test(
     COMMAND ${APPLICATION} init graph -7
 )
 set_tests_properties (${prefix}_Can_detect_negative_index_of_vertex PROPERTIES
-    PASS_REGULAR_EXPRESSION "Error: graph has no vertexes"
+    PASS_REGULAR_EXPRESSION "Error with argument 2: not a number"
     LABELS "${MODULE}")
 
 add_test(
