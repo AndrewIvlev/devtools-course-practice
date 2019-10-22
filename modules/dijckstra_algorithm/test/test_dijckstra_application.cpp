@@ -391,7 +391,7 @@ TEST_F(DijckstraApplicationTest,
     // Arrange
     std::string expected_result = "1";
     std::vector<std::string> vec_arg = {"init", "graph", "2"};
- 
+
     // Act
     Act2(vec_arg);
     vec_arg = {"add", "0", "1", "5"};
