@@ -35,19 +35,38 @@ TEST_F(DijckstraTest, can_create_dijckstra_object) {
     // Arrange
     graph_weights_matrix m(4);
     int i = 0;
-    list l = {
+    list li = {
         { 0, 7, 9, 0 },
         { 7, 0, 10, 15 },
         { 9, 10, 0, 11 },
         { 0, 15, 11, 0 }
     };
-    for (auto it : l) {
+    for (auto it : li) {
         m[i].insert(m[i].end(), it.begin(), it.end());
         i++;
     }
 
     // Act & Assert
     ASSERT_NO_THROW(Dijckstra g(std::move(m), 4));
+}
+
+TEST_F(DijckstraTest, can_create_copy_dijckstra_object) {
+    // Arrange
+    graph_weights_matrix m(3);
+    int i = 0;
+    list li = {
+        { 0, 7, 9 },
+        { 7, 0, 10 },
+        { 9, 10, 0 }
+    };
+    for (auto it : li) {
+        m[i].insert(m[i].end(), it.begin(), it.end());
+        i++;
+    }
+    Dijckstra g(std::move(m), 3)
+
+    // Act & Assert
+    ASSERT_NO_THROW(Dijckstra g_copy(g));
 }
 
 TEST_F(DijckstraTest,
