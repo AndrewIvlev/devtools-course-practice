@@ -124,7 +124,7 @@ int DijckstraApplication::CastNumber(const char* num) {
         x = std::stoi(num);
     }
     catch (std::out_of_range& err) {
-        throw std::runtime_error("too big number");
+        throw std::runtime_error("out of range");
     }
     if (x > 100)
         throw std::runtime_error("too big number");
