@@ -169,6 +169,20 @@ TEST_F(DijckstraTest,
 }
 
 TEST_F(DijckstraTest,
+    equals_result_from_the_same_vertexes_dijckstra_objects) {
+    // Arrange
+    init();
+    Dijckstra g(std::move(a), n);
+    std::vector<int> expected_v(1, 0);
+
+    // Act
+    std::vector<int> actual_v = g.GetShortestPathBetween(0, 0);
+
+    // Assert
+    EXPECT_EQ(expected_v, actual_v);
+}
+
+TEST_F(DijckstraTest,
     equals_result_of_equals_dijckstra_objects_by_operator_equality) {
     // Arrange
     init();
