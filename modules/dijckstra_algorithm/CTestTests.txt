@@ -76,6 +76,14 @@ set_tests_properties (${prefix}_Validation_when_both_vertex_is_incorrect PROPERT
     LABELS "${MODULE}")
 
 add_test(
+    NAME ${prefix}_Validation_when_both_vertex_is_too_big
+    COMMAND ${APPLICATION} sp 113 117
+)
+set_tests_properties (${prefix}_Validation_when_both_vertex_is_too_big PROPERTIES
+    PASS_REGULAR_EXPRESSION "Error with argument 1: not a number"
+    LABELS "${MODULE}")
+
+add_test(
     NAME ${prefix}_Validation_help_information_after_main_command_without_arguments
     COMMAND ${APPLICATION}
 )
@@ -96,6 +104,14 @@ add_test(
     COMMAND ${APPLICATION} init graph 0
 )
 set_tests_properties (${prefix}_Cant_do_work_without_vertexes PROPERTIES
+    PASS_REGULAR_EXPRESSION "Error: graph has no vertexes"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_Can_detect_negative_index_of_vertex
+    COMMAND ${APPLICATION} init graph -7
+)
+set_tests_properties (${prefix}_Can_detect_negative_index_of_vertex PROPERTIES
     PASS_REGULAR_EXPRESSION "Error: graph has no vertexes"
     LABELS "${MODULE}")
 
