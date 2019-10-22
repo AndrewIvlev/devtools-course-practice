@@ -385,3 +385,19 @@ TEST_F(DijckstraApplicationTest,
 
     Assert(expected_result);
 }
+
+TEST_F(DijckstraApplicationTest,
+    Works_correct_with_two_vertex) {
+    // Arrange
+    std::string expected_result = "0 1";
+    std::vector<std::string> vec_arg = {"init", "graph", "2"};
+ 
+    // Act
+    Act2(vec_arg);
+    vec_arg = {"add", "0", "1", "5"};
+    Act2(vec_arg);
+    vec_arg = {"sp", "0", "1"};
+    Act2(vec_arg);
+
+    Assert(expected_result);
+}
