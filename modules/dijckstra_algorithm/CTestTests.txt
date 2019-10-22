@@ -37,7 +37,7 @@ set_tests_properties (${prefix}_Validation_many_arguments PROPERTIES
 
 add_test(
     NAME ${prefix}_Validation_when_first_vertex_is_incorrect
-    COMMAND ${APPLICATION} sp -9 3
+    COMMAND ${APPLICATION} sp -9 4
 )
 set_tests_properties (${prefix}_Validation_when_first_vertex_is_incorrect PROPERTIES
     PASS_REGULAR_EXPRESSION "Error with argument 1: not a number"
