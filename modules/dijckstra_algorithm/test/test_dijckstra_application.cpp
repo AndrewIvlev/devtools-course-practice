@@ -401,3 +401,26 @@ TEST_F(DijckstraApplicationTest,
 
     Assert(expected_result);
 }
+
+TEST_F(DijckstraApplicationTest, Shortest_path_between_two_vertex) {
+    // Arrange
+    std::string expected_result = "2";
+    std::vector<std::string> vec_arg = {"init", "graph", "4"};
+    Act2(vec_arg);
+    vec_arg = {"add", "0", "1", "5"};
+    Act2(vec_arg);
+    vec_arg = {"add", "0", "2", "7"};
+    Act2(vec_arg);
+    vec_arg = {"add", "0", "3", "13"};
+    Act2(vec_arg);
+    vec_arg = {"add", "1", "3", "19"};
+    Act2(vec_arg);
+    vec_arg = {"add", "2", "3", "2"};
+    Act2(vec_arg);
+
+    // Act
+    vec_arg = {"sp", "1", "2"};
+    Act2(vec_arg);
+
+    Assert(expected_result);
+}
